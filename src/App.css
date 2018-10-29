@@ -1,32 +1,293 @@
-.App {
+
+/*Top content of the landing page*/
+.top-content{
+  position: relative;
+  height: 90vh;
+  background-image: url('../src/aserts/qalam.jpg');
+  background-size: cover;
+}
+.brand-2{
+  line-height: 0;
+  padding: .5rem 0rem;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+.quran-holder{
+  width: 400px;
+  height: 280px;
+  position: absolute;
+  bottom: 0;
+  right:0;
+  background-size: cover;
+  background-image: url('../src/aserts/quran_01.png');
+}
+.top-middle-content{
+  position: absolute;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-self: baseline;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-middle-content > div {
+padding: 2rem 2.5rem;
+margin-left: 2rem;
+min-width: 120px;
+font-size: 1.5rem; 
+text-align: center;
+border: solid 2px #a3680f;
+border-radius: .8rem;
+}
+.top-middle-content-1 > a{
+  text-decoration: none;
+  color: #a3680f;
+}
+
+
+.top-middle-content-2{
+  background-color: #a3680f;
+  
+}
+.top-middle-content-2 > a{
+  text-decoration: none;
+  color: white;
+  
+}
+.top-content-nav{
+  position: relative;
+  display: flex;
+  padding-top: 6%;
+}
+.top-content-link{
+  display: flex;
+  position: absolute;
+  right: 10%;
+  
+}
+
+.top-content-link > a{
+text-decoration: none;
+color: #fff;
+margin-left: 2rem;
+font-size: 1rem;
+}
+
+.top-content-brand{
+  display: inline-flex;
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  color: white;
+}
+.top-content-brand > h1{
+  font-size: 4.8rem;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+/*Middle content style*/
+.middle-content{
+  display: flex;
+  justify-content: space-around;
+  padding: 15rem 5rem 30rem 5rem;
+}
+
+.middle-content-item{
+  width: 20%;
+  padding: 1.5rem 1.9rem;
+  background-color: #c4c4c42c;
+  border-radius: .8rem;
+}
+.more-button{
+  display: inline-flex;
+  padding: .8rem 1.8rem;
+  margin-top: 3.5rem;
+  margin-left: 40%;
+  background-color: #a3680f;
+  color: #fff;
+  border-radius: .3rem;
+  right: 0;
+  align-items: flex-end;
+}
+
+/*Signup form styling*/
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  top: 13%;
+  left: 35%;
+  width: 30%;
+  margin: 0 auto;
+  position: absolute;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.form-content {
+  width: 100%;
+  overflow: hidden;
+}
+.R-form-main {
+  display: flex;
+  padding: 0rem 2rem;
+  flex-direction: column;
+}
+.R-form-data {
+  width: 100%;
+  height: 1.5rem;
+  padding: .5rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+  border: 1px solid rgb(240, 240, 240);
+  transition: all 0.3s;
+}
+.side-message {
+  font-size: 1.5rem;
+  color: #fff;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.R-form-label {
+  color: #43a4ce;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  left: 0;
+  position: absolute;
+  top: -1.5rem;
+  transition: all 0.5s;
+}
+.R-form-data:placeholder-shown ~ .R-form-label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.5rem);
+}
+.R-form-data::-webkit-input-placeholder {
+  color: #a3680f;
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.submit {
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #a3680f;
+  color: #fbfbfb;
+  border: 0.5px solid #a3680f;
+  border-radius: .5rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  transition: all 0.2s;
+  text-align: center;
+  cursor: pointer;
+}
+.R-form-data:focus {
+  outline: none;
+}
+.R-form-data:focus:invalid {
+  border-bottom: 1px solid orangered;
+}
+/*Navbar styling*/
+.nav-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+.nav-list{
+  display: flex;
+  flex:1;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: .5rem 1.5rem;
+  list-style: none;
+}
+.nav-item{
+  padding: 0 .9rem;
+}
+.nav-item > a{
+  text-decoration: none;
+  color: #a3680f;
+}
+/*Footer style*/
+.footer{
+  background-color: #a3680f;
+  padding: .5rem;
+  text-align: center;
+  color: #fff;
+}
+.footer-content {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: .9rem 0;
+  left: 43%;
+  color: #fff;
+}
+.footer-content > a {
+  color: #a3680f;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
+/*Media*/
+/*Small mobile screen*/
+@media only screen and (max-width: 600px){
+  .quran-holder{
+  display: none;
+  }
+  .top-middle-content {
+    flex-direction: column;
+    top: 60%;
+  }
+  .top-middle-content > div {
+    padding: 1rem 1rem;
+    margin-left: 0rem;
+    margin-bottom: 1rem;
+    min-width: 100px;
+    font-size: 1rem;
+  }
+  .top-content-brand > h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0;
+    margin: .5rem auto;
+}
+.top-content-link {
+    top: 4rem;
+    left: 4rem;
+    right: 0;
+}
+.middle-content {
+  flex-direction: column;
+  padding: 0rem;
+}
+.middle-content-item {
+  width: 70%;
+  margin: 1.5rem auto;
+}
+.registration-form {
+  left: 0%;
+  width: 90%;
+  border-radius: 0;
+  margin: 1rem;
+}
+.brand-2 {
+  font-size: 2rem;
+}
+.side-message {
+  font-size: .9rem;
+}
+.footer-content {
+  display: block;
+  text-align: center;
+}
+} 
+@media screen and (min-width: 600px){
+ 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media screen and (min-width: 768px){
+ 
 }
