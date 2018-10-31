@@ -192,6 +192,20 @@ font-size: 1rem;
 .R-form-data:focus:invalid {
   border-bottom: 1px solid orangered;
 }
+/*Error handling*/
+.invalid-feedback{
+  display: block;
+  padding-top: 0.3rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 0.8rem;
+  color: red
+}
+.is-invalid{
+  margin-bottom: 0;
+  border: solid 1px red;
+  overflow:hidden;
+}
 /*Navbar styling*/
 .nav-container{
   display: flex;
