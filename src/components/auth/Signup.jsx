@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import classNames from "classnames";
 import NavBar from '../layout/NavBar';
+import { signUpUser } from '../../actions/AuthAction'
 
 // import { registerUser } from "../../actions/authAction";
 
@@ -13,10 +14,12 @@ class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
+      username: "",
       email: "",
-      password: "",
-      confirmPassword: "",
+      password1: "",
+      password2: "",
+      first_name: "",
+      last_name:"",
       errors: {}
     };
   }
@@ -30,18 +33,18 @@ class Signup extends Component {
   //   }
   // }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.errors) {
-  //     this.setState({ errors: nextProps.errors });
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.registerUser(this.state, this.props.history);
+    this.props.signUpUser(this.state, this.props.history);
   };
   render() {
-    const { name, email, password, confirmPassword, errors } = this.state;
+    const { username, email, password1, password2, first_name, last_name, errors } = this.state;
     return (
       <div>
         <NavBar/>
@@ -53,15 +56,41 @@ class Signup extends Component {
           <div className="R-form-main">
             <InputTextField
               type="text"
-              name="name"
-              value={name}
+              name="username"
+              value={username}
               onChange={this.onChange}
               placeholder="Name"
               label="Name"
               className={classNames("R-form-data", {
-                "is-invalid": errors.name
+                "is-invalid": errors.username
               })}
-              error={errors.name}
+              error={errors.username}
+              cLabel="R-form-label"
+            />
+             <InputTextField
+              type="text"
+              name="first_name"
+              value={first_name}
+              onChange={this.onChange}
+              placeholder="First Name"
+              label="First Name"
+              className={classNames("R-form-data", {
+                "is-invalid": errors.first_name
+              })}
+              error={errors.first_name}
+              cLabel="R-form-label"
+            />
+            <InputTextField
+              type="text"
+              name="last_name"
+              value={last_name}
+              onChange={this.onChange}
+              placeholder="Last Name"
+              label="Last Name"
+              className={classNames("R-form-data", {
+                "is-invalid": errors.last_name
+              })}
+              error={errors.last_name}
               cLabel="R-form-label"
             />
             <InputTextField
@@ -79,28 +108,28 @@ class Signup extends Component {
             />
             <InputTextField
               type="password"
-              name="password"
-              value={password}
+              name="password1"
+              value={password1}
               onChange={this.onChange}
               placeholder="password"
               label="password"
               className={classNames("R-form-data", {
-                "is-invalid": errors.password
+                "is-invalid": errors.password1
               })}
-              error={errors.password}
+              error={errors.password1}
               cLabel="R-form-label"
             />
             <InputTextField
               type="password"
-              name="confirmPassword"
-              value={confirmPassword}
+              name="password2"
+              value={password2}
               onChange={this.onChange}
               placeholder="confirm password"
               label="confirm password"
               className={classNames("R-form-data", {
-                "is-invalid": errors.confirmPassword
+                "is-invalid": errors.password2
               })}
-              error={errors.confirmPassword}
+              error={errors.password2}
               cLabel="R-form-label"
             />
             <div className="submit" onClick={this.onSubmit}>
@@ -122,10 +151,10 @@ Signup.propTypes = {
   // auth: PropTypes.object.isRequired,
   // errors: PropTypes.object.isRequired
 };
-const mapStateToProps = state => ({
- 
+const mapStateToProps = state => ({ 
+  errors: state.errors
 });
 export default connect(
   mapStateToProps,
-  { }
+  { signUpUser}
 )(withRouter(Signup));
