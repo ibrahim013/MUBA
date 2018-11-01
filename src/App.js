@@ -4,19 +4,31 @@ import LandingPage from './components/layout/LandingPage';
 import { Provider } from 'react-redux';
 import store from './store/config-store' 
 import './App.css';
+
+//actions
+import {loginUserSuccess} from './actions/AuthAction';
+//helpers
+import isEmpty from './helper/isEmpty';
+import authCheck from './utilities/authCheck'
+//componemts
 import Signup from './components/auth/Signup';
-
+import EmailConfirm from './components/common/EmailConfirm';
 import Login from './components/auth/Login'
+import Dashboard from './components/dashboard/Dashboard';
 
-
+if (!isEmpty(authCheck())) {
+  store.dispatch(loginUserSuccess(authCheck()));
+}
 const  App = () =>  (
   <Provider store={store}>
     <Router>
       <div>
        <Switch>
         <Route exact path='/' component={LandingPage}/>
-          <Route exact path='/signup' component={Signup}/>
-          <Route exact path='/login' component={Login}/>
+        <Route exact path ='/dashboard' component={Dashboard}/>
+        <Route exact path='/email-confirmation' component={EmailConfirm}/>
+        <Route exact path='/signup' component={Signup}/>
+        <Route exact path='/login' component={Login}/>
         </Switch>
       </div>
     </Router>

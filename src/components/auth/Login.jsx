@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import classNames from "classnames";
 import NavBar from '../layout/NavBar';
+import {loginUser} from "../../actions/AuthAction";
 
 // import { registerUser } from "../../actions/authAction";
 
@@ -22,24 +23,25 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  // componentDidMount() {
-  //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.push("/dashboard");
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.errors) {
-  //     this.setState({ errors: nextProps.errors });
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.registerUser(this.state, this.props.history);
+    this.props.loginUser(this.state, this.props.history);
   };
   render() {
     const { email, password, errors } = this.state;
+    const { isLoading } = this.props.auth
     return (
       <div>
         <NavBar/>
@@ -76,11 +78,11 @@ class Login extends Component {
               cLabel="R-form-label"
             />
             <div className="submit" onClick={this.onSubmit}>
-              Login
+              {isLoading ? 'Loading' : 'Login'}
             </div>
           </div>
           <footer className="footer-content">
-           Don't have an account yet?
+            Don't have an account yet?
             <Link to="/signup">&nbsp; Signup &nbsp; </Link>
             instead.
           </footer>
@@ -90,14 +92,15 @@ class Login extends Component {
   }
 }
 Login.propTypes = {
-  // registerUser: PropTypes.func.isRequired,
-  // auth: PropTypes.object.isRequired,
-  // errors: PropTypes.object.isRequired
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object
 };
 const mapStateToProps = state => ({
- 
+  errors: state.errors,
+  auth: state.auth
 });
 export default connect(
   mapStateToProps,
-  { }
+  {loginUser}
 )(withRouter(Login));
