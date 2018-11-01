@@ -40,7 +40,7 @@ InputTextField.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   placeholder: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.array,
   className: PropTypes.string.isRequired
 };
 

@@ -45,6 +45,7 @@ class Signup extends Component {
   };
   render() {
     const { username, email, password1, password2, first_name, last_name, errors } = this.state;
+    const {auth} = this.props
     return (
       <div>
         <NavBar/>
@@ -59,7 +60,7 @@ class Signup extends Component {
               name="username"
               value={username}
               onChange={this.onChange}
-              placeholder="Name"
+              placeholder="User Name"
               label="Name"
               className={classNames("R-form-data", {
                 "is-invalid": errors.username
@@ -133,7 +134,7 @@ class Signup extends Component {
               cLabel="R-form-label"
             />
             <div className="submit" onClick={this.onSubmit}>
-              Create account
+             {auth.isLoading ? 'Loading...' : 'Create account'} 
             </div>
           </div>
           <footer className="footer-content">
@@ -147,12 +148,13 @@ class Signup extends Component {
   }
 }
 Signup.propTypes = {
-  // registerUser: PropTypes.func.isRequired,
+  signUpUser: PropTypes.func.isRequired,
+  errors: PropTypes.object,
   // auth: PropTypes.object.isRequired,
-  // errors: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({ 
-  errors: state.errors
+  errors: state.errors,
+  auth: state.auth
 });
 export default connect(
   mapStateToProps,

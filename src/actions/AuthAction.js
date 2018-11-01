@@ -1,8 +1,16 @@
 import axios from 'axios';
 import { config } from '../config'
-import { SIGN_UP_USER, GET_ALL_ERRORS } from '../types/types'
+import { SIGN_UP_USER, GET_ALL_ERRORS, IS_LOADING, LOGIN_USER_SUCCESS } from '../types/types'
+import setAuthHeader from '../utilities/setHeader'
+import jwt_decode from "jwt-decode";
 
 
+//Loading thunk 
+export const isLoading = () => {
+  return{
+    type: IS_LOADING
+  }
+}
 //Error thunk
 export const setUserError = errors => {
   return {
@@ -19,13 +27,45 @@ return {
 }
 }
 
-export const signUpUser = (userData) => (dispatch) => {
+//Login user thunk
+export const loginUserSuccess = (userData) => {
+return{
+  type: LOGIN_USER_SUCCESS,
+  payload: userData
+}
+}
+
+//signup user
+export const signUpUser = (userData, history) => (dispatch) => {
+  dispatch(isLoading())
   axios.post(`${config.API_BASE_URL}/registration/`, userData)
   .then(
     (res) =>{
       dispatch(signUpUserDetails(res.data))
+      if(res.data.token){
+        history.push('/email-confirmation')
+      }
     }
   ).catch(err =>{
+    dispatch(setUserError(err.response.data))
+  })
+}
+
+//Login User
+export const loginUser = (userData, history) => (dispatch) => {
+  dispatch(isLoading());
+  axios.post(`${config.API_BASE_URL}/login/`, userData).then(
+    res => {
+      const {token} = res.data
+      localStorage.setItem("token", token);
+      setAuthHeader(token);
+      //decode token
+      const decodedToken = jwt_decode(token);
+      //dispatch decoded token to redux store
+      dispatch(loginUserSuccess(decodedToken));
+      history.push('/dashboard')
+    }
+  ).catch(err => {
     dispatch(setUserError(err.response.data))
   })
 }
