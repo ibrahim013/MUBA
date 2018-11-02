@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { config } from '../config'
-import { SIGN_UP_USER, GET_ALL_ERRORS, IS_LOADING, LOGIN_USER_SUCCESS } from '../types/types'
+import { SIGN_UP_USER, GET_ALL_ERRORS, IS_LOADING, LOGIN_USER_SUCCESS, LOAD_USER_PROFILE_SUCCESS } from '../types/types'
 import setAuthHeader from '../utilities/setHeader'
 import jwt_decode from "jwt-decode";
 
@@ -34,6 +34,13 @@ return{
   payload: userData
 }
 }
+//Login user thunk
+export const loadUserProfile = (userProfile) => {
+  return{
+    type: LOAD_USER_PROFILE_SUCCESS,
+    payload: userProfile
+  }
+  }
 
 //signup user
 export const signUpUser = (userData, history) => (dispatch) => {
@@ -56,13 +63,14 @@ export const loginUser = (userData, history) => (dispatch) => {
   dispatch(isLoading());
   axios.post(`${config.API_BASE_URL}/login/`, userData).then(
     res => {
-      const {token} = res.data
+      const {token, user} = res.data
       localStorage.setItem("token", token);
       setAuthHeader(token);
       //decode token
       const decodedToken = jwt_decode(token);
       //dispatch decoded token to redux store
       dispatch(loginUserSuccess(decodedToken));
+      dispatch(loadUserProfile(user))
       history.push('/dashboard')
     }
   ).catch(err => {
