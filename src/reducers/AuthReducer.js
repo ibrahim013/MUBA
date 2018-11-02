@@ -1,10 +1,12 @@
-import { IS_LOADING, SIGN_UP_USER, GET_ALL_ERRORS, LOGIN_USER_SUCCESS } from '../types/types'
+import { IS_LOADING, SIGN_UP_USER, GET_ALL_ERRORS, LOGIN_USER_SUCCESS, LOAD_USER_PROFILE_SUCCESS } from '../types/types'
 import isEmpty from '../helper/isEmpty';
 
 const initialState = {
   isLoading: false,
   isAuthenticated: false,
-  user: {}
+  user: {},
+  profile: {}
+  
 }
 const AuthReducer = (state=initialState, action) => {
   switch(action.type){
@@ -22,7 +24,12 @@ const AuthReducer = (state=initialState, action) => {
     return {
       ...state,
       isAuthenticated: !isEmpty(action.payload),
-      user: action.payload
+      user: action.payload,
+    }
+    case LOAD_USER_PROFILE_SUCCESS:
+    return{
+      ...state,
+      profile: action.payload
     }
     case GET_ALL_ERRORS:
     return{

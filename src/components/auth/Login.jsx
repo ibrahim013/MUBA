@@ -78,7 +78,7 @@ class Login extends Component {
               cLabel="R-form-label"
             />
             <div className="submit" onClick={this.onSubmit}>
-              {isLoading ? 'Loading' : 'Login'}
+              {isLoading ? 'Loading...' : 'Login'}
             </div>
           </div>
           <footer className="footer-content">

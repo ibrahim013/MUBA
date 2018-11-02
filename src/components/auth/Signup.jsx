@@ -27,11 +27,11 @@ class Signup extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  // componentDidMount() {
-  //   if (this.props.auth.isAuthenticated) {
-  //     this.props.history.push("/dashboard");
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
@@ -45,7 +45,7 @@ class Signup extends Component {
   };
   render() {
     const { username, email, password1, password2, first_name, last_name, errors } = this.state;
-    const {auth} = this.props
+    const { isLoading } = this.props.auth;
     return (
       <div>
         <NavBar/>
@@ -68,7 +68,7 @@ class Signup extends Component {
               error={errors.username}
               cLabel="R-form-label"
             />
-             <InputTextField
+            <InputTextField
               type="text"
               name="first_name"
               value={first_name}
@@ -134,7 +134,7 @@ class Signup extends Component {
               cLabel="R-form-label"
             />
             <div className="submit" onClick={this.onSubmit}>
-             {auth.isLoading ? 'Loading...' : 'Create account'} 
+            {isLoading ? 'Loading...' : 'Create account'} 
             </div>
           </div>
           <footer className="footer-content">
@@ -150,7 +150,7 @@ class Signup extends Component {
 Signup.propTypes = {
   signUpUser: PropTypes.func.isRequired,
   errors: PropTypes.object,
-  // auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({ 
   errors: state.errors,
