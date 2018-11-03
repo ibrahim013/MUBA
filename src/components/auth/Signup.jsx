@@ -55,26 +55,24 @@ class Signup extends Component {
             <p className="side-message">Create your account</p>
           </div>
           <div className="R-form-main">
-            <InputTextField
+            {/* <InputTextField
               type="text"
               name="username"
               value={username}
               onChange={this.onChange}
               placeholder="User Name"
-              label="Name"
               className={classNames("R-form-data", {
                 "is-invalid": errors.username
               })}
               error={errors.username}
               cLabel="R-form-label"
-            />
+            /> */}
             <InputTextField
               type="text"
               name="first_name"
               value={first_name}
               onChange={this.onChange}
               placeholder="First Name"
-              label="First Name"
               className={classNames("R-form-data", {
                 "is-invalid": errors.first_name
               })}
@@ -87,7 +85,6 @@ class Signup extends Component {
               value={last_name}
               onChange={this.onChange}
               placeholder="Last Name"
-              label="Last Name"
               className={classNames("R-form-data", {
                 "is-invalid": errors.last_name
               })}
@@ -99,8 +96,7 @@ class Signup extends Component {
               name="email"
               value={email}
               onChange={this.onChange}
-              placeholder="email or phone number"
-              label="email"
+              placeholder="email"
               className={classNames("R-form-data", {
                 "is-invalid": errors.email
               })}
@@ -113,7 +109,6 @@ class Signup extends Component {
               value={password1}
               onChange={this.onChange}
               placeholder="password"
-              label="password"
               className={classNames("R-form-data", {
                 "is-invalid": errors.password1
               })}
@@ -126,23 +121,23 @@ class Signup extends Component {
               value={password2}
               onChange={this.onChange}
               placeholder="confirm password"
-              label="confirm password"
               className={classNames("R-form-data", {
                 "is-invalid": errors.password2
               })}
               error={errors.password2}
               cLabel="R-form-label"
             />
-            <div className="submit" onClick={this.onSubmit}>
+            <div className="submit bottom-space" onClick={this.onSubmit}>
             {isLoading ? 'Loading...' : 'Create account'} 
             </div>
+            {errors.non_field_errors && <span className="invalid-feedback-general">{errors.non_field_errors}</span>}
           </div>
-          <footer className="footer-content">
-            Already have an account with us?
-            <Link to="/login">&nbsp; Login &nbsp; </Link>
-            instead.
-          </footer>
         </div>
+        <footer className= "footer-content footer-content-signup">
+          Already have an account with us?
+          <Link to="/login">&nbsp; Login &nbsp; </Link>
+          instead.
+        </footer>
       </div>
     );
   }

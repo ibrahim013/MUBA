@@ -17,6 +17,7 @@ export default class LandingPage extends Component {
         <Link to="/login">Login</Link>
         </div> 
         </div>
+        <div className="arabic-content"><p>بسم الله رحماني رحيم</p></div>
         <div className="top-middle-content"> 
           <div className="top-middle-content-1"><Link to='/signup'>Enroll</Link></div>
           <div className="top-middle-content-2"><Link to ="/">View More</Link></div>
@@ -25,21 +26,21 @@ export default class LandingPage extends Component {
         </section>
         <section className='middle-content'>
             <div className="middle-content-item">
-              <h3>Memorization</h3>
+              <h3 className="middle-header">Memorization</h3>
                 <p>
                 Lorem ipsum dolor sit amet, quo ut porro appareat atomorum. An nulla oporteat quo, veri qualisque duo te. Ne usu mentitum appareat, id doctus animal antiopam vix. Feugiat dolorem explicari has te, cum inermis maluisset ad. Essent consequuntur id usu. Et mundi tibique mea.
                 </p>
               <div className="more-button">more >></div>
             </div >
             <div className="middle-content-item">
-              <h3>Lectures</h3>
+              <h3 className="middle-header">Lectures</h3>
               <p>
                 Lorem ipsum dolor sit amet, quo ut porro appareat atomorum. An nulla oporteat quo, veri qualisque duo te. Ne usu mentitum appareat, id doctus animal antiopam vix. Feugiat dolorem explicari has te, cum inermis maluisset ad. Essent consequuntur id usu. Et mundi tibique mea.
               </p>
               <div className="more-button">more >></div>
             </div>
             <div className="middle-content-item"> 
-              <h3>Languages</h3>
+              <h3 className="middle-header">Languages</h3>
               <p>
                 Lorem ipsum dolor sit amet, quo ut porro appareat atomorum. An nulla oporteat quo, veri qualisque duo te. Ne usu mentitum appareat, id doctus animal antiopam vix. Feugiat dolorem explicari has te, cum inermis maluisset ad. Essent consequuntur id usu. Et mundi tibique mea.
               </p>

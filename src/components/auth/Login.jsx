@@ -56,8 +56,7 @@ class Login extends Component {
               name="email"
               value={email}
               onChange={this.onChange}
-              placeholder="email or phone number"
-              label="email"
+              placeholder="email"
               className={classNames("R-form-data", {
                 "is-invalid": errors.email
               })}
@@ -70,7 +69,6 @@ class Login extends Component {
               value={password}
               onChange={this.onChange}
               placeholder="password"
-              label="password"
               className={classNames("R-form-data", {
                 "is-invalid": errors.password
               })}
@@ -78,15 +76,16 @@ class Login extends Component {
               cLabel="R-form-label"
             />
             <div className="submit" onClick={this.onSubmit}>
-              {isLoading ? 'Loading...' : 'Login'}
+              {isLoading ? 'Loading...' : 'Log in'}
             </div>
+            {errors.non_field_errors && <span className="invalid-feedback-general">{errors.non_field_errors}</span>}
           </div>
-          <footer className="footer-content">
+        </div>
+        <footer className="footer-content">
             Don't have an account yet?
             <Link to="/signup">&nbsp; Signup &nbsp; </Link>
             instead.
           </footer>
-        </div>
       </div>
     );
   }

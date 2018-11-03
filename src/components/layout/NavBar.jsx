@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
       </div>
     )
     const userLink =(
-      <div>
+      <div className="navbar">
         <ul>
           <li>Dashbord</li>
           <li>Logout</li>
