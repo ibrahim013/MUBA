@@ -1,3 +1,24 @@
+/*Reset link*/
+html {
+  font-size: 62.5%; 
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+ body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+.bottom-space{
+ margin-bottom: 3rem;
+}
+h4, h2{
+  font-size: 1.4rem;
+  padding: 1.2rem 0;
+}
 
 /*Top content of the landing page*/
 .top-content{
@@ -8,18 +29,19 @@
 }
 .brand-2{
   line-height: 0;
-  padding: .5rem 0rem;
+  padding: 3rem 0rem 2rem 0;
   text-align: center;
   font-size: 3.5rem;
   font-weight: 600;
-  color: #fff;
+  color: rgba(240, 233, 233, 0.829);
 }
 .brand-3{
   line-height: 0;
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
+  padding: 1rem 0;
   font-weight: 600;
-  color: #fff;
+  color: rgba(240, 233, 233, 0.829);
 }
 .quran-holder{
   width: 400px;
@@ -68,7 +90,7 @@ border-radius: .8rem;
 .top-content-nav{
   position: relative;
   display: flex;
-  padding-top: 6%;
+  padding-top: 3%;
 }
 .top-content-link{
   display: flex;
@@ -78,10 +100,10 @@ border-radius: .8rem;
 }
 
 .top-content-link > a{
-text-decoration: none;
-color: #fff;
-margin-left: 2rem;
-font-size: 1rem;
+  text-decoration: none;
+  color: rgba(240, 233, 233, 0.829);
+  margin-left: 2rem;
+  font-size: 1.6rem;
 }
 
 .top-content-brand{
@@ -96,19 +118,35 @@ font-size: 1rem;
   font-weight: 600;
   padding: 0;
   margin: 0;
+  color: rgba(240, 233, 233, 0.829);
 }
 /*Middle content style*/
 .middle-content{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: 15rem 5rem 30rem 5rem;
 }
-
+.arabic-content{
+  font-size: 7rem;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 32%
+}
 .middle-content-item{
-  width: 20%;
+  width: 23%;
   padding: 1.5rem 1.9rem;
+  margin-left: 4rem;
   background-color: #c4c4c42c;
   border-radius: .8rem;
+  font-size: 1.3rem;
+}
+.middle-header{
+  font-size: 2.3rem;
+  color:  #a3680f;;
+  border-bottom: solid 4px;
+  margin-bottom: 1rem;
 }
 .more-button{
   display: inline-flex;
@@ -126,11 +164,11 @@ font-size: 1rem;
 .registration-form {
   display: flex;
   flex-direction: column;
-  background-color: #000000;
+  background-color: #000000de;;
   top: 13%;
-  left: 35%;
-  width: 30%;
-  margin: 0 auto;
+  left: 39%;
+  width: 23%;
+  min-height: 40%;
   position: absolute;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -147,8 +185,9 @@ font-size: 1rem;
 }
 .R-form-data {
   width: 100%;
-  height: 1.5rem;
+  height: 3.5rem;
   padding: .5rem;
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
   background-color: #fff;
   border: 1px solid rgb(240, 240, 240);
@@ -158,6 +197,7 @@ font-size: 1rem;
   font-size: 1.5rem;
   color: #fff;
   text-align: center;
+  padding-bottom: 1.5rem;
 }
 
 .R-form-label {
@@ -177,7 +217,7 @@ font-size: 1rem;
 .R-form-data::-webkit-input-placeholder {
   color: #a3680f;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
 }
 
 .submit {
@@ -192,7 +232,14 @@ font-size: 1rem;
   transition: all 0.2s;
   text-align: center;
   cursor: pointer;
+  font-size: 1.5rem;
 }
+.submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .submit:hover::after {
+    transform: scaleX(1.4) scaleY(1.5);
+    opacity: 0; }
 .R-form-data:focus {
   outline: none;
 }
@@ -206,25 +253,34 @@ font-size: 1rem;
   padding-top: 0.3rem;
   margin-bottom: 1rem;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   color: red
+}
+.invalid-feedback-general{
+  display: block;
+  padding-top: 0.3rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 1.5rem;
+  color: orangered
 }
 .is-invalid{
   margin-bottom: 0;
-  border: solid .9px red;
+  border: solid .9px  orangered;
   overflow:hidden;
 }
 
 /*Navbar styling*/
 .nav-container{
   display: flex;
+  font-size: 1.3rem;
 }
 .nav-list{
   display: flex;
   flex:1;
   flex-direction: row;
   justify-content: flex-end;
-  padding: .5rem 1.5rem;
+  padding: 2rem 6rem;
   list-style: none;
 }
 .nav-item{
@@ -232,7 +288,7 @@ font-size: 1rem;
 }
 .nav-item > a{
   text-decoration: none;
-  color: #a3680f;
+  color: #000000de;
 }
 /*Side tab*/
 .container{
@@ -243,6 +299,8 @@ font-size: 1rem;
   background-color: #000000de;
   height: 100vh;
   color: #fff;
+  font-size: 1.5rem;
+  padding-top: 3rem;
   box-shadow: 1rem 0rem 2rem rgba(0, 0, 0, 0.15);
 }
 .top-bar-container{
@@ -264,7 +322,7 @@ flex-direction: column;
 }
 
 .dashboard-links{
-  padding:0 1.5rem;
+  padding: 4rem 3rem;
   margin: 0;
   list-style: none;
 }
@@ -296,19 +354,28 @@ flex-direction: column;
   padding: .5rem;
   text-align: center;
   color: #fff;
+  font-size: 1.5rem;
+  padding: 1.5rem;
 }
 .footer-content {
   display: flex;
-  justify-content: center;
   padding: .9rem 0;
-  left: 43%;
-  color: #fff;
+  left: 41%;
+  color: black;
+  position: absolute;
+  bottom: 40%;
+  font-size: 1.3rem;
 }
 .footer-content > a {
   color: #a3680f;
   text-decoration: none;
   font-weight: 600;
 }
+.footer-content-signup{
+  bottom: 15%;
+  left: 40%;
+}
+
 /*Settings container*/
 .settings-container{
   width: 30%;
@@ -320,6 +387,7 @@ flex-direction: column;
 }
 .setting-list{
   list-style: none;
+  font-size: 1.5rem;
 }
 .setting-list > li {
   line-height: 3rem;
@@ -334,11 +402,10 @@ flex-direction: column;
   position: absolute;
   top: 5%;
   left: 35%;
-  padding: .8rem 2.3rem;
+  padding: 1rem 2.3rem;
   min-width: 80%;
   min-height: 50%;
   background-color: whitesmoke;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
 .settings-button{
   display: flex;
@@ -426,6 +493,7 @@ flex-direction: column;
   position: relative;
   cursor: pointer;
   margin-right: 1rem;
+  font-size: 1.2rem;
  }
 
 .btn:hover {
@@ -446,3 +514,10 @@ flex-direction: column;
   color: #fff; }
   .btn-blue::after {
     background-color: #fff; }
+
+.btn--brown{
+  background-color: #a3680f;
+  color: #fff;
+  /* width: 50%;
+  font-size: 1.6rem; */
+}

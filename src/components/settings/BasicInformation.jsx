@@ -14,13 +14,16 @@ class BasicInformation extends Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  componentDidMount(){
-    this.setState({
-      first_name: this.props.auth.profile.first_name,
-      last_name:this.props.auth.profile.last_name,
-      email:this.props.auth.profile.email,
-      phone_number:this.props.auth.profile.phone_number
-    })
+  componentWillReceiveProps(nextProps){
+    if(nextProps.auth.profile){
+      this.setState({
+        first_name: this.props.auth.profile.first_name,
+        last_name:this.props.auth.profile.last_name,
+        email:this.props.auth.profile.email,
+        phone_number:this.props.auth.profile.phone_number
+      })
+    }
+
   }
   render() {
     const {first_name, last_name, errors, email, phone_number} = this.state
@@ -66,7 +69,7 @@ class BasicInformation extends Component {
               disabled
             />
             <InputTextField
-              type="phonenumber"
+              type="text"
               name="phone_number"
               value={phone_number}
               onChange={this.onChange}
