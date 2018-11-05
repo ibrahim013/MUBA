@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import SideTab from '../layout/SideTab';
-import Main from './Main';
-import ProfileSettings from '../settings/ProfileSettings';
-import LiveCall from './LiveCall';
+import UploadFile from './UploadFile';
+
 
 class Dashboard extends Component {
-constructor(props){
-  super(props)
-}
 
   render() {
-    const check = this.props.location.pathname;
     const optionHearder = [{
       title: 'Home',
       icon:'fas fa-home',
       link: '/dashboard'
     },
     {
-      title: 'Catalog',
+      title: 'Upload',
       icon:'far fa-compass',
-      link: '/catalog'
+      link: '/admin/dashboard/upload'
     },
     {
       title: 'Live Call',
@@ -42,17 +37,17 @@ constructor(props){
       {
         path: "/dashboard",
         exact: true,
-        sidebar: () => <div className="content"><Main/></div>,
+        sidebar: () => <div className="content">hello 3</div>,
         main: () => <h2>Home</h2>
       },
       {
-        path: "/dashboard/settings/personal-information",
-        sidebar: () => <div className="content"><ProfileSettings/></div>,
-        main: () => <h2>Settings</h2>
+        path: "/admin/dashboard/upload",
+        sidebar: () => <div className="content"><UploadFile/></div>,
+        main: () => <h2>Upload</h2>
       },
       {
         path: "/dashboard/live-call",
-        sidebar: () => <div className="content"><LiveCall/></div>,
+        sidebar: () => <div className="content">hello 2</div>,
         main: () =><h2>Live Call</h2>
       }
     ];
