@@ -19,6 +19,7 @@ import EmailConfirm from './components/common/EmailConfirm';
 import Login from './components/auth/Login'
 import Dashboard from './components/dashboard/Dashboard';
 import ProfileSettings from './components/settings/ProfileSettings';
+import AdminDashboard from './components/adminDashboard/Dashboard';
 
 if (!isEmpty(authCheck())) {
   store.dispatch(loginUserSuccess(authCheck()));
@@ -34,6 +35,7 @@ const  App = () =>  (
         <Route exact path='/signup' component={Signup}/>
         <Route exact path='/login' component={Login}/>
         <Route path='/dashboard/setting' component={ProfileSettings}/>
+        <Route path="/admin/dashboard" component={AdminDashboard}/>
         </Switch>
       </div>
     </Router>

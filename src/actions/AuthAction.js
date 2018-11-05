@@ -49,7 +49,7 @@ export const signUpUser = (userData, history) => (dispatch) => {
   .then(
     (res) =>{
       dispatch(signUpUserDetails(res.data))
-      if(res.data.token){
+      if(res.data.detail){
         history.push('/email-confirmation')
       }
     }

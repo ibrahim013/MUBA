@@ -55,7 +55,7 @@ class Signup extends Component {
             <p className="side-message">Create your account</p>
           </div>
           <div className="R-form-main">
-            {/* <InputTextField
+            <InputTextField
               type="text"
               name="username"
               value={username}
@@ -66,7 +66,7 @@ class Signup extends Component {
               })}
               error={errors.username}
               cLabel="R-form-label"
-            /> */}
+            />
             <InputTextField
               type="text"
               name="first_name"

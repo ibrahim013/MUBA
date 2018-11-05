@@ -17,13 +17,12 @@ class BasicInformation extends Component {
   componentWillReceiveProps(nextProps){
     if(nextProps.auth.profile){
       this.setState({
-        first_name: this.props.auth.profile.first_name,
-        last_name:this.props.auth.profile.last_name,
-        email:this.props.auth.profile.email,
-        phone_number:this.props.auth.profile.phone_number
+        first_name: nextProps.auth.profile.first_name,
+        last_name: nextProps.auth.profile.last_name,
+        email: nextProps.auth.profile.email,
+        phone_number: nextProps.auth.profile.phone_number
       })
     }
-
   }
   render() {
     const {first_name, last_name, errors, email, phone_number} = this.state
