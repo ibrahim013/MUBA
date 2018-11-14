@@ -467,23 +467,30 @@ flex-direction: column;
     font-size: 1rem;
   }
   .top-content-brand > h1 {
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 600;
     padding: 0;
     margin: .5rem auto;
 }
 .top-content-link {
-    top: 4rem;
-    left: 4rem;
-    right: 0;
+    top: 6rem;
+    right: 12rem;
+}
+.top-content-link > a {
+  font-size: 2rem
 }
 .middle-content {
   flex-direction: column;
   padding: 0rem;
 }
 .middle-content-item {
-  width: 70%;
+  width: 59%;
   margin: 1.5rem auto;
+}
+.arabic-content {
+  font-size: 6rem;
+  top: 32.4%;
+  left: 3.3rem;
 }
 .registration-form {
   left: 0%;
@@ -511,8 +518,28 @@ flex-direction: column;
  
 }
 
-@media screen and (min-width: 768px){
+/*tablet*/
+@media only screen and (min-width: 768px) {
+
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
  
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1500px) {
+.middle-content-item {
+  width: 17%;
+}
+  .registration-form{
+    width: 19.9%;
+    min-height: 33.5%;
+  } 
+  .footer-content{
+    bottom: 20%;
+  }
 }
 
 .btn, .btn:link, .btn:visited {
