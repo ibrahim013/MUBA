@@ -346,7 +346,9 @@ left: 25%;
 width: 50%;
 flex-direction: column;
 }
-
+.content-more{
+  width: 90rem; 
+}
 .dashboard-links{
   padding: 4rem 3rem;
   margin: 0;
@@ -448,6 +450,45 @@ flex-direction: column;
   padding: 1.2rem;
   background-color: transparent;
   color: #000000;
+}
+/*catalog*/
+.beginner{
+  height: 300px;
+  display: flex;
+  margin: 2em;
+  padding: 2rem;
+  flex-wrap: wrap;
+  overflow: scroll;
+  justify-content: space-around;
+}
+.start{
+  margin-right: 2rem;
+  justify-content: center;
+  padding-top: 10%;
+  font-size: 1.5rem;
+}
+.start2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.intermediate{
+  height: 300px;
+  display: flex;
+  margin: 2em;
+  padding: 2rem;
+  flex-wrap: wrap;
+  overflow: scroll;
+  justify-content: space-around;
+}
+.advance{
+  height: 300px;
+  display: flex;
+  margin: 2em;
+  padding: 2rem;
+  flex-wrap: wrap;
+  overflow: scroll;
+  justify-content: space-around;
 }
 /*Media*/
 /*Small mobile screen*/

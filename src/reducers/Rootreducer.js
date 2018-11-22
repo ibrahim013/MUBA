@@ -6,5 +6,5 @@ import {UploadReducer} from './UploadReducer';
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
-  progress: UploadReducer
+  upload: UploadReducer
 });

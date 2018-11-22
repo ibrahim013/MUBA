@@ -3,15 +3,13 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import SideTab from '../layout/SideTab';
 import Main from './Main';
 import ProfileSettings from '../settings/ProfileSettings';
+import Catalog from './Catalog';
 import LiveCall from './LiveCall';
 
 class Dashboard extends Component {
-constructor(props){
-  super(props)
-}
 
   render() {
-    const check = this.props.location.pathname;
+
     const optionHearder = [{
       title: 'Home',
       icon:'fas fa-home',
@@ -20,7 +18,7 @@ constructor(props){
     {
       title: 'Catalog',
       icon:'far fa-compass',
-      link: '/catalog'
+      link: '/dashboard/catalog'
     },
     {
       title: 'Live Call',
@@ -44,6 +42,11 @@ constructor(props){
         exact: true,
         sidebar: () => <div className="content"><Main/></div>,
         main: () => <h2>Home</h2>
+      },
+      {
+        path: "/dashboard/catalog",
+        sidebar: () => <div className="content content-more"><Catalog/></div>,
+        main: () => <h2>Catalog</h2>
       },
       {
         path: "/dashboard/settings/personal-information",

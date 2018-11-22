@@ -2,21 +2,20 @@ import React, { Component } from 'react'
 import SelectInputField from '../common/SelectInputFiled';
 import ReactDropzone from "react-dropzone";
 import { connect } from 'react-redux';
-import {progress} from '../../actions/UploadAction'
+import {uploadData} from '../../actions/UploadAction'
 
 class UploadFile extends Component {
   constructor(){
     super()
     this.state = {
-      course_level:"",
-      course_type:"",
-      course_language:"",
+      level:"",
+      type:"",
+      language:"",
       lesson_number: '1',
-      current: '0',
+      upload: {},
       errors:{},
-      files:[]
+      file:[]
     }
-    console.log(this.state.current, "this is the current state")
   }
   
   onChange = (event) => {
@@ -24,27 +23,33 @@ class UploadFile extends Component {
   }
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.progress(this.state.files)
-    console.log(this.state)
+    let data = {
+      level: this.state.level,
+      type: this.state.type,
+      language: this.state.language,
+    }
+    this.props.uploadData(data, this.state.file)
   }
-  onDrop = (files) => {
-    this.setState({files})
+
+  onDrop = (file) => {
+    this.setState({file})
   };
   onCancel =()=> {
     this.setState({
-      files: []
+      file: []
     });
   }
   
   componentWillReceiveProps(nextProps){
-    if(nextProps.progress){
-      console.log(nextProps.progress, "=====next props====")
-      this.setState({current: nextProps.progress})
+    console.log(nextProps)
+    if(nextProps.upload){
+      this.setState({upload: nextProps.upload})
     }
   }
 
   render() {
-    const {errors, course_level, course_type, course_language, lesson_number, files, current} = this.state;
+    const {errors, level, type, language, lesson_number, file, upload} = this.state;
+    console.log(upload, "this is a upload")
     const lessonNumber = []
     for(let i=1; i<40; i++){
       lessonNumber.push(({value: i, label: i}))
@@ -57,15 +62,15 @@ class UploadFile extends Component {
       },
       {
         label:"Beginner",
-        value: "beginner"
+        value: 1
       },
       {
         label: "Intermediate",
-        value: "intermediate"
+        value: 2
       },
       {
         label: "Advance",
-        value: "advance"
+        value: 3
       },
     ]
     const courseType =[
@@ -75,15 +80,15 @@ class UploadFile extends Component {
       },
       {
         label: "video",
-        value: "video"
+        value: 1
       },
       {
         label:"ebook",
-        value: "ebook"
+        value: 2
       }, 
       {
         label:"pdf",
-        value: "pdf"
+        value: 3
       }, 
     ]
     const courseLanguage =[
@@ -93,56 +98,55 @@ class UploadFile extends Component {
       },
       {
         label:" Arabia",
-        value: 'arabic'
+        value: 1
       },
       {
         label:"English",
-        value: "english"
+        value: 2
       },
       {
         label: "Yoruba",
-        value: "youruba"
+        value: 3
       },
       {
         label: "Hausa",
-        value: "hausa"
+        value: 4
       },
     ]
-  
-  
     
+
     return (
       <div>
-        <div className="progress-container"><progress value={current} max="100"></progress></div>
+        {/* <div className="progress-container"><progress value={current} max="100"></progress></div> */}
         <h1 className="bottom-space">Coures Upload</h1>
         <div className ="upload-wrapper">
           <SelectInputField
             options={courseOptions}
-            name='course_level'
-            error={errors.course_level}
-            value={course_level}
+            name='level'
+            error={errors.level}
+            value={level}
             onChange={this.onChange}
             info="Select a course level"
           />
           <SelectInputField
             options={courseType}
-            name='course_type'
-            error={errors.course_type}
-            value={course_type}
+            name='type'
+            error={errors.type}
+            value={type}
             onChange={this.onChange}
             info="Select a course type"
           />
           <SelectInputField
             options={courseLanguage}
-            name='course_language'
-            error={errors.course_language}
-            value={course_language}
+            name='language'
+            error={errors.language}
+            value={language}
             onChange={this.onChange}
             info="Select a course language"
           />
           <SelectInputField
             options={lessonNumber}
-            name='lesson_number'
+            name='number'
             error={errors.lesson_number}
             value={lesson_number}
             onChange={this.onChange}
@@ -150,10 +154,10 @@ class UploadFile extends Component {
           />
         </div>
         <div>
-          <ReactDropzone accept="video/mp4, application/pdf, image/jpeg" onDrop={this.onDrop} onFileDialogCancel={this.onCancel} className="drop-style">
+          <ReactDropzone  onDrop={this.onDrop} onFileDialogCancel={this.onCancel} className="drop-style">
           <p> <i className="fas fa-cloud-upload-alt"></i> Drag and Drop files here</p> 
           </ReactDropzone>
-          {files.length > 0 && (
+          {file.length > 0 && (
           <div className="upload-btn">
             <div className="btn btn-green" onClick={this.onSubmit}>Upload</div>
           </div>)
@@ -161,7 +165,19 @@ class UploadFile extends Component {
           <div>
           <ul>
             {
-              this.state.files.map(f => <li key={f.name}>{f.name} - {f.size}bytes</li>)
+              this.state.file.map(f => <li key={f.name}>{f.name} - {f.size}bytes</li>)
+            }
+          </ul>
+          <ul>
+            <h3>Preview</h3>
+            {upload.length > 0 &&(
+              <div>
+                <video>
+                <source source={upload.payload.file_url}></source>
+                </video>
+              </div>
+            )
+              
             }
           </ul>
           </div>
@@ -171,6 +187,6 @@ class UploadFile extends Component {
   }
 }
 const mapStateToProps =(state)=>({
-  progress: state.progress
+  upload: state.upload.upload
 })
-export default connect(mapStateToProps, {progress}) (UploadFile)
+export default connect(mapStateToProps, {uploadData}) (UploadFile)

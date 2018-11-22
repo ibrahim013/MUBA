@@ -1,24 +1,37 @@
 import axios from "axios";
-import {PROGRESS_UPDATE_SUCCESS} from '../types/types'
+import {UPLOAD_DATA_SUCCESS, GET_ALL_UPLOAD_SUCCESS} from '../types/types'
+import {config} from '../config';
 
-const progressUpdate = (progress) => {
+const uploadDataSucess = (uploadData) => {
   return{
-    type: PROGRESS_UPDATE_SUCCESS,
-    payload: progress
+    type: UPLOAD_DATA_SUCCESS,
+    payload: uploadData
   }
 }
-
-export const progress =(file)=>(dispatch)=>{
-  const options = {
-    headers:{
-      "content-type": file.type
-    },
-    onUploadProgress: (progressEvent) => {
-      let progressCompleted = Math.round((progressEvent.loaded * 100)/progressEvent.total);
-      console.log(progressCompleted, "=====checkon========")
-      dispatch(progressUpdate(progressCompleted))
-    },
+const getAllUpload = (data) => {
+  return{
+    type: GET_ALL_UPLOAD_SUCCESS,
+    payload: data
   }
-  axios.post('https://httpbin.org/post', file, options).then(res=> console.log(res.data))
+}
+//action for form upload
+export const uploadData =(data, file)=>(dispatch)=>{
+  const options = {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }
+  let fd = new FormData()
+  file.map((file) => {
+    return fd.append('File[]',file);
+  });
+
+  for (const key of Object.keys(data)) {
+    fd.append(key, data[key]);
+  }
+  axios.post(`${config.API_BASE_URL}/media/`, fd, options)
+  .then(res => dispatch(uploadDataSucess(res.data)))
   .catch(err => console.log(err.response.data))
+}
+
+export const getUpload = () => (dispatch) => {
+  axios.get(`${config.API_BASE_URL}/media/`).then(res => dispatch(getAllUpload(res.data))).catch(err => console.log(err.response.data))
 }

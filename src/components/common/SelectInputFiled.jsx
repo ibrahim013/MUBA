@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 const SelectInputField = ({ value, onChange, info, name, options, error }) => {
   const selectedOption = options.map(option => (
-    <option key={option.value}>{option.label}</option>
+    <option value={option.value} key={option.value}>{option.label}</option>
   ));
   return (
     <div className="form-content-i">
