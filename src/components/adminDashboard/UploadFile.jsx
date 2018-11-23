@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import SelectInputField from '../common/SelectInputFiled';
 import ReactDropzone from "react-dropzone";
 import { connect } from 'react-redux';
-import {uploadData} from '../../actions/UploadAction'
+import {uploadData} from '../../actions/UploadAction';
+import LoadingBar from 'react-redux-loading-bar'
 
 class UploadFile extends Component {
   constructor(){
@@ -14,7 +15,7 @@ class UploadFile extends Component {
       lesson_number: '1',
       upload: {},
       errors:{},
-      file:[]
+      files:[]
     }
   }
   
@@ -28,27 +29,26 @@ class UploadFile extends Component {
       type: this.state.type,
       language: this.state.language,
     }
-    this.props.uploadData(data, this.state.file)
+    this.props.uploadData(data, this.state.files)
   }
 
-  onDrop = (file) => {
-    this.setState({file})
+  onDrop = (files) => {
+    this.setState({files})
   };
   onCancel =()=> {
     this.setState({
-      file: []
+      files: []
     });
   }
   
   componentWillReceiveProps(nextProps){
-    console.log(nextProps)
     if(nextProps.upload){
       this.setState({upload: nextProps.upload})
     }
   }
 
   render() {
-    const {errors, level, type, language, lesson_number, file, upload} = this.state;
+    const {errors, level, type, language, lesson_number, files, upload} = this.state;
     console.log(upload, "this is a upload")
     const lessonNumber = []
     for(let i=1; i<40; i++){
@@ -117,8 +117,11 @@ class UploadFile extends Component {
 
     return (
       <div>
-        {/* <div className="progress-container"><progress value={current} max="100"></progress></div> */}
+       
+        <LoadingBar updateTime={100} maxProgress={100} progressIncrease={10} style={{ backgroundColor: 'blue', height: '5px' }}/>
+      
         <h1 className="bottom-space">Coures Upload</h1>
+        
         <div className ="upload-wrapper">
           <SelectInputField
             options={courseOptions}
@@ -157,7 +160,7 @@ class UploadFile extends Component {
           <ReactDropzone  onDrop={this.onDrop} onFileDialogCancel={this.onCancel} className="drop-style">
           <p> <i className="fas fa-cloud-upload-alt"></i> Drag and Drop files here</p> 
           </ReactDropzone>
-          {file.length > 0 && (
+          {files.length > 0 && (
           <div className="upload-btn">
             <div className="btn btn-green" onClick={this.onSubmit}>Upload</div>
           </div>)
@@ -165,7 +168,7 @@ class UploadFile extends Component {
           <div>
           <ul>
             {
-              this.state.file.map(f => <li key={f.name}>{f.name} - {f.size}bytes</li>)
+              this.state.files.map(f => <li key={f.name}>{f.name} - {f.size}bytes</li>)
             }
           </ul>
           <ul>

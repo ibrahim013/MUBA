@@ -16,8 +16,9 @@ html {
  margin-bottom: 3rem;
 }
 h4, h2{
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   padding: 1.2rem 0;
+  font-weight: 300;
 }
 .drop-style{
   border: 1px  dashed gray;
@@ -453,7 +454,7 @@ flex-direction: column;
 }
 /*catalog*/
 .beginner{
-  height: 300px;
+  height: 320px;
   display: flex;
   margin: 2em;
   padding: 2rem;
@@ -489,6 +490,47 @@ flex-direction: column;
   flex-wrap: wrap;
   overflow: scroll;
   justify-content: space-around;
+}
+/*HomePage sittings*/
+.home-content{
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  text-align: center;
+}
+.home-content > h2 {
+  font-size: 2.6rem;
+  padding-bottom: 3rem;
+  font-weight: 300;
+}
+/*catalog list*/
+.catalog-card{
+  max-width: 630px;
+  height: 120px;
+  display: flex;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2); 
+  margin: 5rem;
+}
+.catalog-content {
+  width: 300px;
+  font-size: 1.2rem;
+}
+.catalog-content > p{
+  display: block;
+}
+.catalog-btn{
+  padding-top:3rem;
+}
+
+/*Live Call*/
+.live-call{
+  height: 90vh;
+  background-image: linear-gradient(to right bottom, rgba(148, 102, 41, 0.479), rgba(148, 102, 41,  0.966)), url('./aserts//Classrooms.jpg');
+  background-size: cover;
+  width: 100%;
+}
+.content-call{
+  width:70%
 }
 /*Media*/
 /*Small mobile screen*/
@@ -621,11 +663,23 @@ flex-direction: column;
   /* width: 50%;
   font-size: 1.6rem; */
 }
+.btn-black {
+  background-color: #000000;
+  color: #fff; }
+  .btn-blue::after {
+    background-color: #000000; }
+.btn-position{
+  position: absolute;
+  top:50%;
+  left:40%;
+}
 .upload-btn{
   display: flex;
   justify-content: flex-end;
   margin: 2rem 0;
 }
-.progress-container > progress{
+.progress-container {
 width: 100%;
+height: 15px;
+/* border:solid 2px red; */
 }
