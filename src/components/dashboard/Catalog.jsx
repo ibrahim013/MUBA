@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
 import {getUpload} from "../../actions/UploadAction";
-import back from "../../aserts/back.mp4"
+import back from "../../aserts/ back.mp4";
+import CatalogList from "../dashboard/CatalogList";
+import {Link} from "react-router-dom";
 
 class Catalog extends Component {
 
 componentDidMount(){
-  this.props.getUpload()
+  // this.props.getUpload()
 }
   render() {
     const{content} = this.props.upload;
@@ -31,7 +33,7 @@ componentDidMount(){
     for(let i=1; i<4; i++){
       contentV =(
        <div>
-        <video width="320" height="240" controls>
+        <video width="300" height="220" controls>
           <source src={back} type="video/mp4" ></source>
         </video>
        </div>
@@ -39,22 +41,36 @@ componentDidMount(){
     }
     return (
       <div>
-        <div className="beginner">
-          <h2 className="start">Beginner Intro</h2>
-          <div>{contentV}</div>
-          <div>{contentV}</div>
-        </div>
-        <div className="intermediate">
-        <h2 className="start">Intermediate Intro</h2>
-          <div>{contentV}</div>
-          <div>{contentV}</div>
-        </div>
-        <div className="advance">
-        <h2 className="start">Advance Intro</h2>
-          <div>{contentV}</div>
-          <div>{contentV}</div>
-        </div>
-       {/* {displayContent} */}
+        <CatalogList
+          src={back} 
+          level= "Beginner"
+          intro="this is just a test of concept this is just a test of concept this is just a test of concept"
+        />
+          <CatalogList
+          src={back} 
+          level= "Beginner"
+          intro="this is just a test of concept this is just a test of concept this is just a test of concept"
+        />
+          <CatalogList
+          src={back} 
+          level= "Intermediate"
+          intro="this is just a test of concept this is just a test of concept this is just a test of concept"
+        />
+          <CatalogList
+          src={back} 
+          level= "Intermediate"
+          intro="this is just a test of concept this is just a test of concept this is just a test of concept"
+        />
+        <CatalogList
+          src={back} 
+          level= "Advance"
+          intro="this is just a test of concept this is just a test of concept this is just a test of concept"
+        />
+        <CatalogList
+          src={back} 
+          level= "Advance"
+          intro="this is just a test of concept this is just a test of concept this is just a test of concept"
+        />
       </div>
     )
   }

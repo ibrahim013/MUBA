@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class LiveCall extends Component {
   render() {
     return (
-      <div>
-        this is for a live call page
+      <div className="live-call">
+        <div className="btn btn-black btn-position">Join Online Classroom</div>
       </div>
     )
   }

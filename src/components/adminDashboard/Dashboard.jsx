@@ -10,7 +10,7 @@ class Dashboard extends Component {
     const optionHearder = [{
       title: 'Home',
       icon:'fas fa-home',
-      link: '/dashboard'
+      link: '/admin/dashboard'
     },
     {
       title: 'Upload',

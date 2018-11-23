@@ -77,3 +77,14 @@ export const loginUser = (userData, history) => (dispatch) => {
     dispatch(setUserError(err.response.data))
   })
 }
+//Logout User
+export const logoutUser = () => dispatch => {
+  axios.post(`${config.API_BASE_URL}/logout/`)
+  .then(() => {
+  //remove token from local storage
+  localStorage.removeItem("token");
+  //remove from authorization header
+  setAuthHeader(false);
+  window.location.href="/login"
+  })
+};

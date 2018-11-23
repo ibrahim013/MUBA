@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
+import {connect} from 'react-redux';
 import SideTab from '../layout/SideTab';
 import Main from './Main';
 import ProfileSettings from '../settings/ProfileSettings';
 import Catalog from './Catalog';
 import LiveCall from './LiveCall';
+import {logoutUser} from '../../actions/AuthAction';
 
 class Dashboard extends Component {
 
@@ -55,8 +57,12 @@ class Dashboard extends Component {
       },
       {
         path: "/dashboard/live-call",
-        sidebar: () => <div className="content"><LiveCall/></div>,
+        sidebar: () => <div className="content content-call"><LiveCall/></div>,
         main: () =><h2>Live Call</h2>
+      },
+      {
+        path: "/logout",
+        main: logoutUser()
       }
     ];
     return (
@@ -90,4 +96,4 @@ class Dashboard extends Component {
     </Router>
  )}
 }
-export default Dashboard
+export default connect(null, {logoutUser})(Dashboard)
